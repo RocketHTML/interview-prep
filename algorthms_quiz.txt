@@ -1,0 +1,182 @@
+36 = 6 incorrect out of 42
+	bugs: #5 #19 #32 #33
+	true: #40 #22
+
+0 = O(1) (checked)
+1 = O(n) (checked)
+2 = O(n) (checked)
+3 = O(logn) (check)
+4 = O(n) (checked)
+5 = O(n) (wrong)  (they all evaluate to incorrect) (#1)
+6 = O(nlogn) (checked)
+7 = O(n2) (checked)
+8 = O(2^n) (checked)
+9 = O(n2) (checked)
+10 = O(n2) (checked)
+11 = O(1) (checked)
+12 = O(n) (checked)
+13 = O(n) (checked)
+14 = O(n) (checked)
+15 = O(1) (checked)
+16 = O(n) (checked)
+17 = O(n) (checked)
+18 = O(n) (checked)
+19 = O(n) (wrong) 
+	O(1) O(n!) O(n2) O(logn) O(nlogn) O(2^n) (wrong) (#2)
+20 = O(1) (checked)
+21 = O(n) (checked)
+22 = O(1) (wrong)
+	O(n) (correct)(#3)
+	"Considering you have a pointer to the node to insert, what is the time complexity of inserting after the nth element of a doubly linked list?"
+
+23 = O(1) (checked)
+	"Considering you have a pointer to the node to remove, what is the time complexity of removing the nth element of a doubly linked list?"
+	- if removal is O(1), then insertion is O(1)
+	- insertion is O(1), but you don't have a pointer to the nth location
+
+24 = O(n) (checked)
+25 = O(1) (checked)
+26 = O(1) (checked)
+27 = O(n) (checked)
+28 = O(n) (checked)
+29 = O(n) (checked)
+30 = O(1) (checked)
+31 = O(1) (checked)
+32 = O(1) (wrong) "pop of a stack" (#4)
+	O(n) O(n!) O(n2) O(logn) O(nlogn) O(2^n)
+33 = O(n) (wrong) (#5)
+	O(1) O(n!) O(logn) O(nlogn) O(2^n)
+34 = O(1) (checked)
+35 = O(1) (checked)
+36 = O(n) (checked)
+37 = O(1) (checked)
+38 = O(n) (checked)
+39 = O(1) (checked)
+40 = O(n) (wrong) #6 
+	O(1) (correct)
+	"What is the worst case time complexity of insertion in a hash table with the implementation you used during the previous Hash Table C project (chaining)?"
+	A chain is a linked list. And a linked list can be inserted into at O(1) using the head
+41 = O(1) (checked)
+42 = O(n) (checked)
+
+-------------------------------------------------------------
+Algorithms
+
+1.  Bubble sort
+2.  Insertion sort
+3.  Selection sort
+4.  Quick sort
+5.  Shell sort
+6.  Cocktail shaker sort
+7.  Counting sort
+8.  Merge sort
+9.  Heap sort
+10. Radix sort
+11. Bitonic sort
+12. Quick sort (hoare partition scheme)
+13. Deck sort
+
+---------------------------------
+Discuss algorithms in terms of 
+	big O - how to mathematicallly prove it?
+	loop invariants
+----------------------------------
+Loop Invariants Proofs
+
+	Initial
+	Maintanence 
+	Terminating
+prove inv i holds initially - base - for 0 or 1
+prove inv i holds for i+1 - holds for all +ints
+----------------------------------
+Bubble Sort
+
+You swap the first two elements in the array if the left most element is larger. You continue to do this for each pair of elements in the array until the end. At that point, the last element will be the biggest in the array.
+- the largest number bubbles up
+- can go up until k-1 until k == 1
+
+for i = (n - 1) to 1
+  for j = 0 to (i - 1)
+    if A[j] > A[j + 1]
+      swap(A[j], A[j + 1])
+
+----------------------------------
+Insertion Sort
+
+Insert item, then swap backward if it's lesser
+until you reach an element that smaller, or idx 0
+list is sorted before next element is added
+- add elements to sorted list in O(n) time
+- so full algorithm would be O(n * m) on sorted
+- less comparisons than bubble sort
+- can be done inplace by starting from idx 0
+- only requires one comparison per element
+
+why less comparisons than bubble sort?
+3:00
+https://www.youtube.com/watch?v=c4BRHC7kTaQ
+
+"Has an advantage over bubble sort in that we only need to make comparisons until we find the location of the element in the sorted list"
+so O(n) if list is sorted
+while bubble is always O(n2) comparisons by design
+
+for i = 1 to n-1
+	j = 1
+	while j > 0 and A[j] < A[j-1]
+		swap(A[j], A[j-1])
+		j = j - 1
+--------------------------------------
+Quick Sort
+
+Select a pivot element, ideally the median, but can be randomly chosen to optimize speed.
+- what if the selectors are out of sync?
+- what if unsymmetric room to one side of pivot?
+	- the pivot gets auto-swapped every time
+Two selectors, one at the head, one at the tail
+First selector moves forward until it reaches >=
+Second selector moves back until it finds <=
+then both selects swap those elements and continue
+until both elements point to the same element
+which will always be the pivot.
+At that point, the pivot is in the correct position, and the list is partioned into elements less than and greater than the pivot.
+
+So now we partion each set on either side of pivot
+recursively until we're dealing with lists of size 1, all in the correct positions.
+
+Partition(A, size)
+  if (size < 2)
+    return
+  pivot = A[rand() % size]
+  L = 0, U = size - 1
+  while L < U
+    while A[L] < pivot
+       L = L+1
+    while A[U] > pivot
+       U = U - 1
+    Swap(A[L], A[U])
+  Partition(A, L)
+  Partition(&A[L + 1], size - 1 - L)
+------------------------------------------
+Aside
+
+They touch up on a lot of loved ideas
+	memoization
+	binary search
+	linear searches
+Try to categorize all of the algorithms
+------------------------------------------
+
+Merge Sort
+
+Central part is the merge part, where we concatinate two sorted arrays.
+We split the array into singular arrays,
+then we merge them.
+
+for i = 1; i < size; i = 2i
+   for j = 0; j < size - i; j = j + 2i
+       Merge(&A[j], i, min(2i, size - j))
+
+
+
+
+

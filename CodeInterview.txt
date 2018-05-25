@@ -1,0 +1,38 @@
+Cracking the Code Interview
+
+Clarification
+Think outloud
+Edge cases 
+
+
+1.1 Is Unique:Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures? 
+
+Input: "Hello"  "abcdefg"   ""
+Output: False    True       ?
+
+1.2 Check Permutation: Given two strings, write a method to decide if one is a permutation of the other
+	- Permutation: 
+	A way, especially one of several possible variations, in which a set or number of things can be ordered or arranged.
+
+Input: ("Hello", "Goodbye")  ("timeout", "eioumtt")	("","")
+Output:       False		    True 		   ?
+
+----------------------------------------------------------------------
+
+
+2.1 Remove Dups: Write code to remove duplicates from an unsorted linked list. 
+	How would you solve this problem if a temporary buffer is not allowed?
+
+2.2 Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list. 
+
+-------------------------------------
+
+1. Clarifications. If you don't fully understand the question, please ask for clarification, ask for it to be repeated, can write it down verbatim if you want to. Whatever you need to do to get a complete understanding of what's being asked.
+
+2. Constantly thinking outloud is probably the best thing you can do in the interview. Because it gives the interviewer the opportunity to see your thought process and gives them the opportunity to possibly course correct you more towards the question they were asking, or feed off of that to ask you more questions to demonstrate your knowledge even further because you may have said something that they can expand upon. 
+
+3. Thought through everything before writing something down.
+The first thing at the top of your mind isn't going to be the best solution.
+You might get challenged by the interviewer to get something faster, better, more efficient. Then when you both feel ready, you can begin coding. 
+
+4. Test your solution. If they don't give you an example, make some up. Edge cases. Think about them and bring them up.
