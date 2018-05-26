@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1527342652 source:c:\users\madison\desktop\interview-prep\c++\uniqstring\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
