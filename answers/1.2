@@ -1,0 +1,17 @@
+1.2 Check Permutation: Given two strings, write a method to decide if one is a permutation of the other
+	- Permutation: 
+	A way, especially one of several possible variations, in which a set or number of things can be ordered or arranged.
+
+Input: ("Hello", "Goodbye")  ("timeout", "eioumtt")	("","")
+Output:       False		    			True 		   ?
+
+
+O(nlogn+mlogm)
+	sort them
+	compare sorted lists for equality
+	could use sorted() in python
+
+O(n+m)time O(1)size
+	make an ascii int array initialized to all 0s
+	iterate through n and increment the ascii indexes of its characters
+	when iterating through m, all indicies should be 1, otherwise return false

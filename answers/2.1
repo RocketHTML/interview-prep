@@ -1,0 +1,37 @@
+2.1 Remove Dups: Write code to remove duplicates from an unsorted linked list. 
+	How would you solve this problem if a temporary buffer is not allowed?
+
+	a-b-c-u-d-u-e-f
+
+	a-b-c-d-e-f-g-h
+
+ - single or double 
+ 	- does it matter?
+
+
+-------------------------------------------------
+
+Without buffer
+
+O(n^2)
+compare each element to every element beyond it
+
+-------------------------------------------------
+
+With temporary buffer
+
+O(n)best  O(n^2)worst 
+hash table:
+iterate through and add to hash table
+if position holds a duplicate, remove node
+	- collisions cause O(n^2) worst case with linked-list chaining
+	- causes a trivial proportion to n with hash table chaining
+
+O(n)
+ascii boolean array - if values are all ascii
+
+O(nlogn)
+merge sort
+if they're sorted, then you don't need (n^2) comparisons
+ - but how do you sort a linked list
+ - how to preserve the original order

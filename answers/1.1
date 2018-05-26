@@ -1,0 +1,46 @@
+
+1.1 Is Unique:Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures? 
+
+Input: "HeghijkHabcdHfoe"  "abcdefg"   ""
+Output: False    			True       ?
+
+
+----------------------------------------------
+No data structures:
+O(n^2) 
+	check each character against the entire string
+
+O(nlogn) 
+	merge sort - 
+	quick sort - best 
+
+O(n) - doesn't work - need array of 128 spaces
+	bucket count - reliant on low level environment
+		need a datastructure as large as the character table
+			few hundred bytes
+				 - if string is big enough to hold the alphabet, it can't have only unique characters. So this solution is irrelevant if our string's length is limited. nlogn time is trivial for small n.
+
+
+	Reuse the string buffer.
+	This idea of swapping characters
+
+	Hold character's value
+	It's used as the index of its bucket 
+	Swap the character at that bucket with the held one.
+	Overwrite that bucket with 0 if the swapped character is not 0.
+	Return false if it is 0.
+
+lets say it's smaller than the alphabet
+
+
+
+----------------------------------------------
+With data structures:
+O(n)
+	put strings in hashtable 
+
+O(n)
+	make a parallel ascii boolean array
+
+---------------------------------------------
+Too big: 

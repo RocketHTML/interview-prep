@@ -1,0 +1,37 @@
+1.1 Is Unique:Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures? 
+
+O(nlogn)
+in-place quick sort **do tonight**
+
+
+1.2 Check Permutation: Given two strings, write a method to decide if one is a permutation of the other
+
+O(n+m)time O(1)size
+	make an ascii int array initialized to all 0s
+	iterate through n and increment the ascii indexes of its characters
+	when iterating through m, all indicies should be 1, otherwise return false
+
+
+2.1 Remove Dups: Write code to remove duplicates from an unsorted linked list. 
+	How would you solve this problem if a temporary buffer is not allowed?
+
+O(n^2) - no buffer
+compare each element to every element beyond it
+
+O(nlogn) - with buffer
+merge sort **do tonight**
+if they're sorted, then you don't need (n^2) comparisons
+
+O(n)best  O(nlogn)worst - for dict resizing
+hash table:
+iterate through and add to hash table (dict in python)
+if position holds a duplicate, remove node
+
+
+2.2 Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list. 
+
+O(n)
+two pointers, p1 and p2
+p2 is k elements ahead (if K2 is 2nd to last; x* = 2; p2 = p1 + k + (2 - 2*))
+increment both by 1 until p2 is null
+p1 is the kth to last element

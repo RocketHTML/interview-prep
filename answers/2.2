@@ -1,0 +1,14 @@
+2.2 Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list. 
+
+- do we have the length of the list?
+- if second to last element is defined as kx*
+	- increment p2 by k + (2 - x*)
+
+O(n)
+two pointers, p1 and p2
+p2 is k elements ahead (if K2 is 2nd to last; x* = 2; p2 = p1 + k + (2 - 2*))
+increment both by 1 until p2 is null
+p1 is the kth to last element
+
+
+- you can't get the pointer to target element without going at least target spaces
