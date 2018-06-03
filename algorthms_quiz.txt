@@ -177,6 +177,11 @@ for i = 1; i < size; i = 2i
        Merge(&A[j], i, min(2i, size - j))
 
 
+-----------------------------------------
+
+Selection Sort
+
+Given that we have an array of entries, search for the smallest element and swap it into the first position. Continue for all positions.
 
 
 

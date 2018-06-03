@@ -3,6 +3,7 @@ Cracking the Code Interview
 Clarification
 Think outloud
 Edge cases 
+Test Solution
 
 
 1.1 Is Unique:Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures? 
@@ -25,7 +26,7 @@ Output:       False		    True 		   ?
 
 2.2 Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list. 
 
--------------------------------------
+---------------------------------------------------------------------
 
 1. Clarifications. If you don't fully understand the question, please ask for clarification, ask for it to be repeated, can write it down verbatim if you want to. Whatever you need to do to get a complete understanding of what's being asked.
 

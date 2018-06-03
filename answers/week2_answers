@@ -1,0 +1,256 @@
+---------------------------------------------------------------------------
+Write a method to replace all spaces in a string with '%20'. You may assume that the string has sufficient space at the end to hold the additional characters, and that you are given the 'true' length of the string. Example: Input : "Mr John Smith     ", 13; Output: "Mr%20John%20Smith"
+
+Solution:
+	O(n)
+	Start i from end of string
+	Start j from right most side of buffer
+	A[i] swaps with A[j] until A[i] is white space
+	then A[j] becomes % 0 2
+	i and j both increment
+
+	repeat loop until i < 0
+
+
+C Code  
+
+Madison Thinking Method #1 : Declaritive Pattern
+0. write explanation	  - the problem is solved after this 				 (25%)
+1. function signature 	  - assumptions about input are clarified after this (50%)
+2. variables declarations - puzzle clarified (and initialized ) after this 	 (75%)
+3. algorithm 		 	  -	explicit childsplay due to variable declarations (100%)
+
+/*** 0. write explanation 
+ *
+ * Solution:
+ *	O(n)
+ *	Start i from end of string
+ *	Start j from right most side of buffer
+ *	A[i] swaps with A[j] until A[i] is white space
+ *	then A[j] becomes % 0 2
+ *	i and j both increment
+ *
+ *	repeat loop until i < 0
+ */
+
+/* 1. function signature */
+
+void parseSpaces(char *A, unsigned int size)
+{
+
+/* 2. variable declarations */
+	int i;
+	int j;
+	char tmp;
+
+	if (A == null || size == 0)
+		return;
+
+	i = (int)size - 1;
+	j = strlen(A);
+
+/* 3. algorithm */
+
+	while (i >= 0)
+	{
+		if (A[i] != ' ')
+			A[j]  = A[i];
+		else
+		{
+			A[j--] = '0';
+			A[j--] = '2';
+			A[j]   = '%';
+		}
+		i--;
+		j--;
+	}
+
+}
+
+---------------------------------------------------------------------------
+
+
+Given a string, write a function to check if it is a permutation of a palindrome. A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words. Example: Input: Tact Coa; Output: True (permutations "taco cat", "atco cta", etc.)
+
+/* 0. Write explanation */
+
+Solution:
+	O(n) or O(nlogn) 
+	Every palindrome has 2 of every character, except for at most 1.
+	With an array as big as ascii, you could find a palindome in O(n)
+	Without the array, you could sort the string in O(nlogn), and then evaluate the string in O(n)
+		You have to evaluate every character 
+
+	Evaluate the string O(n)
+	Make sure every character has a partner, execpt for at most 1 
+	Do while
+		see if A[i] has a partner
+		if it doesnt and found not set, set found, i += 1
+		else if it doesnt and found is set, return false
+		else if it does, i += 2
+	while (A[i] != '\0' && )
+
+	Quicksort O(nlogn)
+	Recursively partition array around A[size - 1]
+
+
+C Code
+
+/* 1. function signature */
+
+void quicksort(char *A, int size);
+
+int palindromePermutation (char *A)
+{
+	quicksort(A, strlen(A));
+
+	/* 2. variable declarations */
+
+	int loner = 0;
+	int i = 0;
+
+	/* 3. algorithm */
+
+	do {
+		if (A[i] != A[i + 1])
+			if (!loner)
+			{
+				loner++;
+				i++;
+			}
+			else
+				return -1;
+		else
+			i += 2;
+	} while (A[i] && A[i + 1]);
+
+}
+
+void quicksort(char *A, int size)
+{
+	if (A == null || size <= 1)
+			return;
+
+		char *pivot = A + (size - 1);
+		char *i = A, j = A;
+		char tmp;
+
+		while (j < A + size)
+		{
+			if (*j <= *pivot)
+			{
+				tmp = *i;
+				*i = *j;
+				*j = tmp;
+				i++;
+			}
+			j++;
+		}
+
+		quicksort(A, size / 2);
+		quicksort(A + size / 2, size / 2);
+}
+
+
+---------------------------------------------------------------------------
+
+Implement an algorithm to delete a node in the middle (i.e. any node but the first and last node, not necessarily the exact middle) of a singly linked list, given only access to that node.
+
+Solution:
+	O(1)
+	copy pointer to next node
+	Set own value and next-pointer equal to that of next node
+	free next node
+
+
+C Code
+
+#include <stdlib.h>
+#define freeNode free
+
+/* 1. function signature */
+
+void deleteNode (Node *node)
+{
+	if (node == NULL)
+		return;
+
+	Node *next = node->next;	/* 2. variable declarations */
+
+	node->n = next->n;			/* 3. algorithm */
+	node->next = next->next;
+
+	freeNode(next);
+}
+
+---------------------------------------------------------------------------
+
+Write a code to partition a linked list around a value x, such that 
+
+all nodes less than x come before all nodes greater than or equal to x. 
+
+x = 5
+4321 897565
+
+1->2->5->7->9  becomes  1->2->5->>7->9->5  when pivot is 5
+
+Solution:
+	O(n)
+	Wall solution
+	3 pointer
+	i runner node - keeps track of the wall of less-thans
+	j runner node - iterates through n elements
+	pivot node - placed at end of the list
+
+	programmatic needs: swap values of two nodes i and j.
+
+
+C Code
+
+void partition(Node *head, int val)
+{
+	if (head == NULL)
+		return;
+
+	Node *pivot = create(val);
+	Node *i = head;
+	Node *j = head;
+	int tmp;
+
+	if (pivot == NULL)
+		return;
+
+	/* 3. algorithm */
+
+	while (j->next)
+	{
+		if (j->n < pivot->n)
+		{
+			tmp = i->n;
+			i->n = j->n;
+			j->n = tmp;
+			i = i->next;
+		}
+		j = j->next;
+	}
+
+	j->next = pivot;
+}
+
+---------------------------------------------------------------------------
+
+Algorithm phase can be broken down into components
+
+
+End conditions
+	when drive component equals a certain value
+
+Drive components
+	these approach the end condition
+	i or j numerical values are simple drives to think about
+
+Operations
+	Assignment Operation:	=
+	Arithmetic Operations:	+ - * / %
+	Loops:					do, while, for
+	Conditionals: 			if-else, case
